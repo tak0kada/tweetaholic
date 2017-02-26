@@ -13,5 +13,8 @@ int main()
 	{
 		cout << "your_password" << endl;
 	}
+# ifdef __MINGW32__
+	cin.get();	
+# endif
 	return 0;
 }
