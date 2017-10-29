@@ -95,7 +95,7 @@ int main()
 	{
 		cout << "password" << endl;
 	}
-	cin.get();
+	cin.get(); // wait until some key is pressed
 	return 0;
 }
 
