@@ -18,17 +18,17 @@ std::string ntp_get(void)
 		tcp::resolver resolver{io_service};
 		tcp::endpoint endpoint(*resolver.resolve({"ntp-b1.nict.go.jp", "http"}));
 		socket.connect(endpoint);
-	
+
 		asio::streambuf request;
 		std::ostream request_stream{&request};
-	
+
 		request_stream << "GET " << "/cgi-bin/time" << " HTTP/1.0\r\n";
 		request_stream << "Host: " << "ntp-b1.nict.go.jp" << "\r\n";
 		request_stream << "Accept: */*\r\n";
 		request_stream << "Connection: close\r\n\r\n";
-	
+
 		asio::write(socket, request);
-	
+
 		asio::streambuf response;
 		boost::system::error_code error;
 		asio::read(socket, response, asio::transfer_all(), error);
@@ -95,7 +95,7 @@ int main()
 	{
 		cout << "password" << endl;
 	}
-	cin.get();	
+	cin.get();
 	return 0;
 }
 
