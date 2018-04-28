@@ -61,7 +61,9 @@ int main()
 		today = buf;
 	}
 
-	if (today.substr(0,3) == "Sun")
+	std::string day{today.substr(0, 3)};
+	int time{std::atoi(today.substr(11, 13).c_str())};
+	if (day == "Sun" || (day == "Sat" && time > 7))
 	{
 		vector<int> pw{97-1,98-2,99-3};
 		vector<int> key{1,2,3};
