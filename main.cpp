@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <boost/asio.hpp>
-
+#include <cstdlib>
 
 std::string ntp_get(void)
 {
@@ -45,6 +45,7 @@ std::string ntp_get(void)
 	catch (std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
+		std::exit(1);
 	}
 
 	return result;
@@ -63,7 +64,7 @@ int main()
 
 	std::string day{today.substr(0, 3)};
 	int time{std::atoi(today.substr(11, 13).c_str())};
-	if (day == "Sun" || (day == "Sat" && time > 7))
+	if (day == "Sat" && time > 7)
 	{
 		vector<int> pw{97-1,98-2,99-3};
 		vector<int> key{1,2,3};
